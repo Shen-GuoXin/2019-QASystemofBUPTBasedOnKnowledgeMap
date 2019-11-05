@@ -66,18 +66,17 @@ def pic2data(file):
         return base64_data
 
 
-def data2pic(data, filename="temp.jpeg"):
+def data2pic(data, filename):
     data = base64.b64decode(data)
     with open(filename, "wb") as f:
         f.write(data)
 
 
-def update_QA_db():
+def update_db():
     read_word = ReadWords()
     questions = read_word.questions
     contents = read_word.contents
-    for index in range(len(questions)):
-        question = questions[index]
+    for index, question in enumerate(questions):
         if r0.exists(question):
             continue
         print("增加新问题：{}".format(question))
@@ -137,7 +136,8 @@ def get_data_from_db_by_name(name):
                 data2pic(
                     data, filename=os.path.join(
                         projectdir, "static/tempImages/image{}{}".format(imagesNumber, imageName)))
-                data = "../static/tempImages/image{}{}".format(imagesNumber, imageName)
+                data = "../static/tempImages/image{}{}".format(
+                    imagesNumber, imageName)
                 imagesNumber += 1
         all_data.append(data)
     return all_data
@@ -155,7 +155,7 @@ def generate_html_by_data(data):
             if txtOrPic:
                 html += '<p>' + d + '</p>'
             else:
-                html += '<img src="{}"  width:auto height:100%;>'.format(
+                html += '<img src="{}"  height:auto width:90% weight:90%;>'.format(
                     d.replace('\\', '/'))
     html += '</div>'
     return html
