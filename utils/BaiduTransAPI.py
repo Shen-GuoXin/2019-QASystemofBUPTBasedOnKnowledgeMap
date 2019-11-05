@@ -48,8 +48,12 @@ def baiduTranslate(text, toLang="en"):
 
 
 def trans_question(texts):
-    questions_dict = json.load(
-        open(os.path.join(projectdir, "Data/txt_file/questions_dict.json"), 'r', encoding='utf-8'))
+    print("开始回译问题")
+    try:
+        questions_dict = json.load(
+            open(os.path.join(projectdir, "Data/txt_file/questions_dict.json"), 'r', encoding='utf-8'))
+    except:
+        questions_dict = {}
     exits_question = list(set(questions_dict.values()))
     languages = ['en', 'jp', 'kor', 'fra', 'spa', 'ru', 'de']
     for text in texts:
@@ -64,6 +68,7 @@ def trans_question(texts):
                 questions_dict[temp_text] = text
         with open(os.path.join(projectdir, "Data/txt_file/questions_dict.json"), 'w', encoding='utf-8') as f:
             json.dump(questions_dict, f, ensure_ascii=False, indent=4)
+    print("回译问题完成")
 
 
 if __name__ == "__main__":
