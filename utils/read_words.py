@@ -51,19 +51,6 @@ class ReadWords(object):
                 txts.append('')
         return txts
 
-    '''读取word中的table'''
-
-    @staticmethod
-    def get_table_from_word(filename):
-        doc = docx.Document(filename)
-        for table in doc.tables:  # 遍历所有表格
-            print('----table------')
-            for row in table.rows:  # 遍历表格的所有行
-                # row_str = '\t'.join([cell.text for cell in row.cells])  # 一行数据
-                # print row_str
-                for cell in row.cells:
-                    print(cell.text, '\t')
-
     def get_pic_from_word(self, path):
         store_path = os.path.join(projectdir, 'static/tempImages/')
         zip_path = 'log.zip'
