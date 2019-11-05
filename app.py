@@ -14,14 +14,15 @@ def index(name=None):
     return render_template('index.html', name=name)
 
 
+# 查找问题主入口
 @app.route('/obtain_answer')
 def obtain_answer():
     question = request.args.get('question')
     answer = query.query(question)
     return answer
-    # return "你好！"
 
 
+# 在网页端更新历史问题
 @app.route('/update_history_answer')
 def update_history_answer():
     history_question = get_history_question()
@@ -31,6 +32,7 @@ def update_history_answer():
     return answer
 
 
+# 在网页端更新常见问题
 @app.route('/update_common_answer')
 def update_common_answer():
     common_question = get_common__question()
@@ -42,5 +44,4 @@ def update_common_answer():
 
 if __name__ == '__main__':
     query = Query()
-    app.debug = False
-    app.run()
+    app.run(debug=False, host="127.0.0.1")
