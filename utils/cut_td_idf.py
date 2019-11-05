@@ -76,7 +76,7 @@ def init_tfidf_chinese_or_pinyin(sources_path):
     pickle.dump([dictionary, tfidf_model], file)
 
 
-def main():
+def cut_td_idf_main():
     cut_td_idf(content_path, td_idf_cut_path)
     cut_td_idf_pinyin(content_path, td_idf_cut_pinyin)
     init_tfidf_chinese_or_pinyin(td_idf_cut_path)
@@ -85,4 +85,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    pass
