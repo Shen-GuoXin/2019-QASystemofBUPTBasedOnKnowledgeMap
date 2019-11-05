@@ -1,23 +1,27 @@
 from utils.extract_keras_bert_feature import KerasBertVector
-
+from conf.path_config import projectdir
 from math import pi
 import numpy as np
-
+import os
 import math
 
 
 class SimTwoQuestion:
     def __init__(self, questions=None):
         self.bert_vector = KerasBertVector()
-        self.vectors = self.bert_vector.bert_encode(questions)
+        if input("是否需要重新生成词向量？（Y/N）") == "Y":
+            self.vectors = self.bert_vector.bert_encode(questions)
+            np.save(os.path.join(projectdir, "Data/vectors.npy"), self.vectors)
+        else:
+            self.vectors = np.load(os.path.join(projectdir, "Data/vectors.npy"))
         print("完成原始问题集词向量化！")
 
     @staticmethod
     def cosine_distance(v1, v2):  # 余弦距离
-        if all(v1) and all(v2):
-            return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
-        else:
-            return 0
+            if all(v1) and all(v2):
+                return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+            else:
+                return 0
 
     @staticmethod
     def scale_zoom(rate):  # sig 缩放

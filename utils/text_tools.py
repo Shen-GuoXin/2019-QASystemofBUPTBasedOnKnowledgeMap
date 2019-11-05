@@ -1,10 +1,3 @@
-# -*- coding: UTF-8 -*-
-# !/usr/bin/python
-# @time     :2019/4/3 11:23
-# @author   :Mo
-# @function :utils, tools
-
-
 from openpyxl import Workbook
 import logging as logger
 import gensim
