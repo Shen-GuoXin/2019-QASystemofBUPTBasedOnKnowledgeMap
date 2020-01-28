@@ -8,7 +8,7 @@ keras_bert==0.80.0
 xlrd==1.2.0
 python_docx==0.8.10
 xpinyin==0.5.6
-tensorflow_gpu==1.14.0
+tensorflow_gpu==1.15.2
 docx==0.2.4
 keras==2.3.1
 tensorflow==2.0.0
