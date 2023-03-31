@@ -1,6 +1,6 @@
 numpy==1.16.4+mkl
 jieba==0.39
-redis==3.3.8
+redis==4.4.4
 gensim==3.8.0
 Flask==1.1.1
 openpyxl==3.0.0
