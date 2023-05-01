@@ -2,7 +2,7 @@ numpy==1.16.4+mkl
 jieba==0.39
 redis==3.3.8
 gensim==3.8.0
-Flask==1.1.1
+Flask==2.3.2
 openpyxl==3.0.0
 keras_bert==0.80.0
 xlrd==1.2.0
